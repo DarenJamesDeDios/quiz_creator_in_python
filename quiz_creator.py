@@ -7,15 +7,24 @@ filename =  "quiz_questions.txt"
 while True:
     #Asking the user to write a question
     print("Please enter your quiz question.")
-    questions = input("Q: ") 
+    questions = input("Q: ")
+
     #Asking the user to write 4 possible answer
     print("Please input the 4 possible answer.")
     a = input("For letter a: ")
     b = input("For letter b: ")
     c = input("For letter c: ")
     d = input("For letter d: ")
+
     #Asking for the correct answer
-    correct_answer = input("The correct answer?(is it a, b, c, or d?): ")
+    while True:
+        correct_answer = input("The correct answer?(is it a, b, c, or d?): ")
+        if correct_answer in ['a', 'b', 'c', 'd']:
+            print("Saving the question and answer")
+            break
+        else:
+            print("Invalid input, please choose only a, b, c, or d")
+
     #A program that saves the quiz questions into a file
     with open(filename, "a", encoding="utf-8") as file:
         file.write(f"Q: {questions}\n")
@@ -24,6 +33,7 @@ while True:
         file.write(f"c. {c}\n")
         file.write(f"d. {d}\n")
         file.write(f"Correct Answer: {correct_answer}\n\n")
+
     #Asking the user if they want to stop adding more quiz questions
     while True:
         print("Do you want to add another quiz question?")
