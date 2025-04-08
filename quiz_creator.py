@@ -11,3 +11,12 @@ while True:
     d = input("For letter d: ")
     #Asking for the correct answer
     correct_answer = input("The correct answer?(is it a, b, c, or d?): ")
+    #Asking the user if they want to stop adding more quiz questions
+    print("Do you want to add another quiz question?")
+    respond = input("yes or no?: ").lower
+    if respond == "yes":
+        continue
+    elif respond == "no":
+        break
+    else:
+        print("Only yes or no answer are allowed my friend")
