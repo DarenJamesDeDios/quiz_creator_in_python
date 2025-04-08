@@ -5,16 +5,16 @@ import time  #Importing time for delays of printed strings
 
 filename =  "quiz_questions.txt"
 
-print("Welcome to \033[1m\033[33mQuiz Creator\033[0m") #Added color for a bit of effects hehe
+print("\033[33m========\033[1mWelcome to Quiz Creator\033[0m\033[33m=========\033[0m") #Added color for a bit of effects hehe
 time.sleep(2)
 
 while True:
     #Asking the user to write a question
-    print("Please enter your quiz question.")
+    print("\033[33mPlease enter your quiz question.\033[0m")
     questions = input("\033[33mQ\033[0m: ")
 
     #Asking the user to write 4 possible answer
-    print("Please input the 4 possible answer.")
+    print("\033[33mPlease input the 4 possible answer.\033[0m")
     a = input("For letter a: ")
     b = input("For letter b: ")
     c = input("For letter c: ")
@@ -45,7 +45,7 @@ while True:
 
     #Asking the user if they want to stop adding more quiz questions
     while True:
-        print("Do you want to add another quiz question?")
+        print("\033[33mDo you want to add another quiz question?\033[0m")
         respond = input("\033[32myes\033[0m or \033[31mno\033[0m?: ").lower()
         if respond == 'yes':
             break
