@@ -45,3 +45,9 @@ for index, (question, choices, correct) in enumerate(questions, 1):
         else:
             print("Invalid input. Please enter a, b, c, or d.")
 #A program that checks if the answer is correct
+    if user_answer == correct:
+        print("Correct!")
+        score += 1
+    else:
+        print(f"Incorrect. The correct answer was: {correct}. {choices[correct]}")
+        
