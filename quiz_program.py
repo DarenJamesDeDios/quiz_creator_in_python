@@ -7,9 +7,25 @@ output_file = input()
 
 with open(output_file, "r", encoding="utf-8") as file:
     content = file.read().strip()
-
+#With this program the question is parse and stored onto a list
 question_blocks = content.split("=" * 50)
 questions = []
 
+for block in question_blocks:
+    lines = block.strip().split('\n')
+    if len(lines) < 6:
+        continue
+
+    question_text = lines[0][3:].strip()
+    choices = {
+        'a': lines[1][3:].strip(),
+        'b': lines[2][3:].strip(),
+        'c': lines[3][3:].strip(),
+        'd': lines[4][3:].strip()
+    }
+    correct_answer = lines[5].split(":")[1].strip().lower()
+
+    questions.append((question_text, choices, correct_answer))
 #A program that select the questions randomly
+
 #A program that checks if the answer is correct
