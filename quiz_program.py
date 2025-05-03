@@ -1,6 +1,9 @@
 #Create the Quiz program that read the output file of the Quiz Creator.
 #The user will answer the randomly selected question and check if the answer is correct.
 
+#Modules imported
+import random
+
 #A program that checks and reads the output file
 print("Please enter your saved output file created by quiz_creator program")
 output_file = input()
@@ -26,6 +29,13 @@ for block in question_blocks:
     correct_answer = lines[5].split(":")[1].strip().lower()
 
     questions.append((question_text, choices, correct_answer))
-#A program that select the questions randomly
 
+#A program that select the questions randomly
+random.shuffle(questions)
+score = 0
+
+for index, (question, choices, correct) in enumerate(questions, 1):
+    print(f"Question {index}/{len(questions)}:{question}")
+    for key, value in choices.items():
+        print(f"  {key}. {value}")
 #A program that checks if the answer is correct
