@@ -8,60 +8,67 @@ from colorama import init, Fore, Style
 # Initialize colorama
 init(autoreset=True)
 
-#For a more engaging quiz_program or a main menu like
-print(Fore.YELLOW + "======= Welcome to the Quiz! =======")
-print(Fore.YELLOW + "What would you like to do?")
-print("1. Start Quiz")
-print("2. Exit")
-choice = input("\nEnter your choice (1 or 2): ").strip()
-
-# A program that checks and reads the output file
 output_file = "quiz_questions.txt"
 
-with open(output_file, "r", encoding="utf-8") as file:
-    content = file.read().strip()
+#For a more engaging quiz_program or a main menu like
+while True:
+    print(Fore.YELLOW + "=========== Welcome to the Quiz! ==========")
+    print(Fore.YELLOW + "What would you like to do?")
+    print("1. Start Quiz")
+    print("2. Exit")
+    user_choice = input("\nEnter your choice (1 or 2): ").strip()
 
-#With this program the question is parse and stored onto a list
-question_blocks = content.split("=" * 50)
-questions = []
+    if user_choice == '1':
+        # A program that checks and reads the output file
+        with open(output_file, "r", encoding="utf-8") as file:
+            content = file.read().strip()
 
-for block in question_blocks:
-    lines = block.strip().split('\n')
-    if len(lines) < 6:
-        continue
+        question_blocks = content.split("=" * 50)
+        questions = []
 
-    question_text = lines[0][3:].strip()
-    choices = {
-        'a': lines[1][3:].strip(),
-        'b': lines[2][3:].strip(),
-        'c': lines[3][3:].strip(),
-        'd': lines[4][3:].strip()
-    }
-    correct_answer = lines[5].split(":")[1].strip().lower()
+        for block in question_blocks:
+            lines = block.strip().split('\n')
+            if len(lines) < 6:
+                continue
 
-    questions.append((question_text, choices, correct_answer))
+            question_text = lines[0][3:].strip()
+            choices = {
+                'a': lines[1][3:].strip(),
+                'b': lines[2][3:].strip(),
+                'c': lines[3][3:].strip(),
+                'd': lines[4][3:].strip()
+            }
+            correct_answer = lines[5].split(":")[1].strip().lower()
 
+            questions.append((question_text, choices, correct_answer))
 #A program that select the questions randomly
-random.shuffle(questions)
-score = 0
+        random.shuffle(questions)
+        score = 0
 
-for index, (question, choices, correct) in enumerate(questions, 1):
-    print(f"\n{Style.BRIGHT}Question {index}/{len(questions)}: {question}")
-    for key, value in choices.items():
-        print(f"  {key}. {value}")
-    
-    while True:
-        user_answer = input("\nYour answer (a/b/c/d): ").lower()
-        if user_answer in ['a', 'b', 'c', 'd']:
-            break
-        else:
-            print(Fore.YELLOW + "Invalid input. Please enter a, b, c, or d.")
-    
-    if user_answer == correct:
-        print(Fore.GREEN + "Correct!")
-        score += 1
+        for index, (question, choices, correct) in enumerate(questions, 1):
+            print(f"\n{Style.BRIGHT}Question {index}/{len(questions)}: {question}")
+            for key, value in choices.items():
+                print(f"  {key}. {value}")
+
+            while True:
+                user_answer = input("\nYour answer (a/b/c/d): ").lower()
+                if user_answer in ['a', 'b', 'c', 'd']:
+                    break
+                else:
+                    print(Fore.YELLOW + "Invalid input. Please enter a, b, c, or d.")
+
+            if user_answer == correct:
+                print(Fore.GREEN + "Correct!")
+                score += 1
+            else:
+                print(Fore.RED + f"Incorrect. The correct answer was: {correct}. {choices[correct]}")
+    # Displaying the user's score
+        print(f"\n{Style.BRIGHT}Quiz Finished! You scored {Fore.CYAN}{score}/{len(questions)}{Style.RESET_ALL}.\n")
+
+#If the user wants to exit
+    elif user_choice == '2':
+        print(Fore.CYAN + "\nThank you for playing. Goodbye!")
+        break
     else:
-        print(Fore.RED + f"Incorrect. The correct answer was: {correct}. {choices[correct]}")
+        print(Fore.YELLOW + "Invalid choice. Please enter 1 or 2.\n")
 
-# Displaying the user's score
-print(f"\n{Style.BRIGHT}Quiz Finished! You scored {Fore.CYAN}{score}/{len(questions)}{Style.RESET_ALL}.\n")
