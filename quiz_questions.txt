@@ -1,0 +1,36 @@
+Q: What is the capital of France?
+a. Madrid
+b. Paris
+c. Berlin
+d. Venice
+Correct Answer: b
+
+==================================================
+
+Q: Which planet is known as the Red Planet?
+a. Mars
+b. Earth
+c. Saturn
+d. Jupiter
+Correct Answer: a
+
+==================================================
+
+Q: What is the programming language used in this program?
+a. CSS
+b. C++
+c. Python
+d. Java
+Correct Answer: c
+
+==================================================
+
+Q: What is the nearest time for midnight?
+a. 12:03PM
+b. 11:59AM
+c. 11:46PM
+d. 12:12AM
+Correct Answer: d
+
+==================================================
+

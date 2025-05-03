@@ -5,8 +5,7 @@
 import random
 
 #A program that checks and reads the output file
-print("Please enter your saved output file created by quiz_creator program")
-output_file = input()
+output_file = "quiz_questions.txt"
 
 with open(output_file, "r", encoding="utf-8") as file:
     content = file.read().strip()
@@ -50,4 +49,7 @@ for index, (question, choices, correct) in enumerate(questions, 1):
         score += 1
     else:
         print(f"Incorrect. The correct answer was: {correct}. {choices[correct]}")
-        
+
+#Displaying the user's score
+print(f"\nQuiz Finished! You scored {score}/{len(questions)}.\n")
+
