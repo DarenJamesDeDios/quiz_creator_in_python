@@ -2,6 +2,7 @@
 #The user will answer the randomly selected question and check if the answer is correct.
 
 #Modules imported
+import time
 import random
 from colorama import init, Fore, Style
 
@@ -12,13 +13,16 @@ output_file = "quiz_questions.txt"
 
 #For a more engaging quiz_program or a main menu like
 while True:
-    print(Fore.YELLOW + "=========== Welcome to the Quiz! ==========")
+    print(Fore.YELLOW + "=========== Welcome to the Quiz! ===========")
     print(Fore.YELLOW + "What would you like to do?")
     print("1. Start Quiz")
     print("2. Exit")
     user_choice = input("\nEnter your choice (1 or 2): ").strip()
 
     if user_choice == '1':
+        print(Fore.CYAN + "\nLoading quiz questions...")
+        time.sleep(1)
+
         # A program that checks and reads the output file
         with open(output_file, "r", encoding="utf-8") as file:
             content = file.read().strip()
@@ -62,13 +66,21 @@ while True:
                 score += 1
             else:
                 print(Fore.RED + f"Incorrect. The correct answer was: {correct}. {choices[correct]}")
+
+            time.sleep(1.5) #For a brief pause on every question
+
     # Displaying the user's score
         print(f"\n{Style.BRIGHT}Quiz Finished! You scored {Fore.CYAN}{score}/{len(questions)}{Style.RESET_ALL}.\n")
+        time.sleep(2)
+
 
 #If the user wants to exit
     elif user_choice == '2':
+        print(Fore.YELLOW + "Exiting...")
+        time.sleep(1.5)
         print(Fore.CYAN + "\nThank you for playing. Goodbye!")
         break
     else:
         print(Fore.YELLOW + "Invalid choice. Please enter 1 or 2.\n")
+        time.sleep(1)
 
