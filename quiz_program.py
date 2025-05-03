@@ -38,4 +38,10 @@ for index, (question, choices, correct) in enumerate(questions, 1):
     print(f"Question {index}/{len(questions)}:{question}")
     for key, value in choices.items():
         print(f"  {key}. {value}")
+    while True:
+        user_answer = input("\nYour answer (a/b/c/d): ").lower() #so that the answer is always in lowercase for checking
+        if user_answer in ['a', 'b', 'c', 'd']:
+            break
+        else:
+            print("Invalid input. Please enter a, b, c, or d.")
 #A program that checks if the answer is correct
