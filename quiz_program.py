@@ -14,9 +14,12 @@ output_file = "quiz_questions.txt"
 #For a more engaging quiz_program or a main menu like
 while True:
     print(Fore.YELLOW + "=========== Welcome to the Quiz! ===========")
+    time.sleep(1)
     print(Fore.YELLOW + "What would you like to do?")
-    print("1. Start Quiz")
-    print("2. Exit")
+    time.sleep(1)
+    print(Fore.GREEN + "1. Start Quiz")
+    print(Fore.RED + "2. Exit")
+    time.sleep(1)
     user_choice = input("\nEnter your choice (1 or 2): ").strip()
 
     if user_choice == '1':
